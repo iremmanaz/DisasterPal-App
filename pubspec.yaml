@@ -31,3 +31,11 @@ dev_dependencies:
   # The following section is specific to Flutter.
 flutter:
   uses-material-design: true
+  assets:
+    - C:/Users/iremm/Desktop/flutter_projects/first_app/images/logo.png
+    - C:/Users/iremm/Desktop/flutter_projects/first_app/images/earthquake.jpg
+    - C:/Users/iremm/Desktop/flutter_projects/first_app/images/fire.jpg
+    - C:/Users/iremm/Desktop/flutter_projects/first_app/images/flood.jpg
+    - C:/Users/iremm/Desktop/flutter_projects/first_app/images/landslide.jpeg
+    - C:/Users/iremm/Desktop/flutter_projects/first_app/images/snowslide.jpeg
+    - C:/Users/iremm/Desktop/flutter_projects/first_app/images/storm.jpg
