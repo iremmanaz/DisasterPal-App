@@ -1,105 +1,196 @@
+import 'package:first_app/Education/quiz/quiz.dart';
+import 'package:first_app/Education/quiz/result_page.dart';
 import 'package:flutter/material.dart';
 
-class LandslideQuizPage extends StatelessWidget {
+class LandslideQuizPage extends StatefulWidget {
+  @override
+  _LandslideQuizPageState createState() => _LandslideQuizPageState();
+}
+
+class _LandslideQuizPageState extends State<LandslideQuizPage> {
+  int _currentQuestionIndex = 0;
+  final List<String> _questions = [
+    "1. What is a landslide?",
+    "2. What can trigger a landslide?",
+    "3. Which type of area is most susceptible to landslides?",
+    "4. What is the role of vegetation in preventing landslides?",
+    "5. What is a debris flow?",
+    "6. How can human activities contribute to the risk of landslides?",
+    "7. What is the main difference between a rockslide and a rockfall?",
+    "8. What does the term 'slope stabilization' refer to?",
+    "9. What are 'retaining walls' used for in landslide mitigation?",
+    "10. Why are landslides common after wildfires?",
+    "11. What is a landslide?",
+    "12. Which factor can trigger a landslide?",
+    "13. What role does water play in landslides?",
+    "14. What is a mudflow?",
+    "15. How can human activities contribute to landslides?",
+    "16. What is the main difference between a landslide and a rockfall?",
+    "17. What is one way to minimize landslide risk to a property?",
+    "18. Which of the following areas is least likely to experience a landslide?",
+    "19. What is a debris flow?",
+    "20. What technology is used to monitor potential landslide areas?"
+  ];
+
+  final List<List<String>> _choices = [
+    [
+      "A sudden snowfall on a mountain",
+      "The movement of rock, earth, or debris down a sloped section of land",
+      "An earthquake that occurs underground",
+      "A large wave caused by an underwater earthquake"
+    ],
+    ["Heavy rain", "Earthquakes", "Volcanic activity", "All of the above"],
+    [
+      "Flat terrains with no vegetation",
+      "Slopes that have been previously disturbed",
+      "Areas with dense, deep-rooted trees",
+      "Urban areas with no nearby water sources"
+    ],
+    [
+      "It adds weight to potentially unstable slopes",
+      "The roots stabilize the soil and absorb water",
+      "It attracts wildlife that can dig and anchor the soil",
+      "Vegetation has no role in preventing landslides"
+    ],
+    [
+      "A slow movement of soil down a slope",
+      "A fast-moving landslide that involves a mixture of water, rock, soil, and vegetation",
+      "The aftermath of a volcanic eruption",
+      "A controlled flow of debris set up to prevent landslides"
+    ],
+    [
+      "By planting trees on slopes",
+      "Through construction and development on unstable slopes",
+      "By studying and monitoring landslide-prone areas",
+      "Human activities do not contribute to the risk of landslides"
+    ],
+    [
+      "A rockslide occurs underwater, while a rockfall does not",
+      "A rockslide involves the movement of rock on a slope, while a rockfall is the free fall of rocks",
+      "A rockfall is larger than a rockslide",
+      "There is no difference; they are the same phenomenon"
+    ],
+    [
+      "The natural process of slopes becoming stable over time",
+      "Engineering and vegetation strategies used to make slopes less susceptible to landslides",
+      "The study of slopes and their angles",
+      "A type of insurance policy for homeowners in landslide-prone areas"
+    ],
+    [
+      "To retain water from reaching landslide-prone areas",
+      "To prevent debris from spreading onto roads and properties",
+      "To support the soil and prevent it from sliding down slopes",
+      "To decorate landscapes and provide aesthetic value"
+    ],
+    [
+      "Because the water used to extinguish fires saturates the soil",
+      "Because fires can destabilize the ground by burning away vegetation that holds the soil in place",
+      "Because the heat from fires causes rocks to expand and crack",
+      "Wildfires have no effect on the likelihood of landslides"
+    ],
+    [
+      "A rapid flow of snow down a sloping surface",
+      "The movement of rock, earth, or debris down a sloped section of land",
+      "An earthquake that triggers a tsunami",
+      "The process of land drying out and cracking"
+    ],
+    ["Heavy rainfall", "Earthquakes", "Volcanic activity", "All of the above"],
+    [
+      "It can lubricate soil and rock, making slopes more susceptible to landslides",
+      "It dries out the land, making it more stable",
+      "It acts as a barrier to landslides",
+      "None of the above"
+    ],
+    [
+      "A slow movement of soil down a hill",
+      "A rapid flow of water mixed with soil and rock",
+      "The flow of mud during a volcanic eruption",
+      "A type of landslide that occurs underwater"
+    ],
+    [
+      "Deforestation",
+      "Construction",
+      "Irrigation practices",
+      "All of the above"
+    ],
+    [
+      "The material involved in the movement",
+      "The speed at which the material moves",
+      "Rockfalls involve liquid, whereas landslides do not",
+      "Landslides can only occur on mountains"
+    ],
+    [
+      "Planting more trees on the slope",
+      "Building a water collection basin at the top of the slope",
+      "Removing all vegetation from the slope",
+      "Covering the slope with a large tarp"
+    ],
+    [
+      "Steep mountainous areas with loose soil",
+      "Flat areas with dense vegetation",
+      "Areas along riverbanks",
+      "Slopes where recent wildfires have occurred"
+    ],
+    [
+      "The movement of large rocks down a slope",
+      "Water flowing through a debris-filled river",
+      "A fast-moving type of landslide consisting of water mixed with soil and other materials",
+      "The flow of trash in urban waterways"
+    ],
+    [
+      "Seismic sensors",
+      "Satellite imagery",
+      "Groundwater measurement tools",
+      "All of the above"
+    ]
+  ];
+  final List<int> _correctAnswers = [
+    1,
+    3,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    1,
+    1,
+    3,
+    1,
+    2,
+    4,
+    3,
+    2,
+    2,
+    3,
+    3
+  ];
+
+  int _score = 0;
+
+  void _answerQuestion(int selectedAnswer) {
+    if (selectedAnswer == _correctAnswers[_currentQuestionIndex]) {
+      _score++;
+    }
+    setState(() {
+      _currentQuestionIndex++;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Landslide Information'),
+        title: Text('Landslide Quiz'),
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  'LANDSLIDES\n',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: const Color.fromARGB(255, 255, 255, 255),
-                  ),
-                ),
-                SizedBox(height: 20),
-                Text(
-                  '\nPart 1: Introduction to Landslides\n\n'
-                  'Landslides, a natural disaster that can occur with little warning, involve the movement of rock, earth, or debris down a slope. They can result from various factors, including heavy rains, earthquakes, volcanic activity, and human activities that destabilize the ground. Understanding what landslides are and why they happen is crucial for reducing their impact on human lives and property.\n\n'
-                  'What Are Landslides?\n'
-                  'A landslide occurs when the stability of a slope fails, causing materials such as soil, rock, or debris to move downwards. This movement can range from slow to rapid, posing significant risks to areas below the slope. Landslides can be triggered by natural processes like intense rainfall or human activities such as deforestation and construction.\n\n'
-                  'Why Do Landslides Occur?\n'
-                  'The Earth'
-                  's surface is constantly changing, and landslides are a part of this dynamic process. They often occur in response to specific triggers like heavy rainfall, rapid snowmelt, earthquakes, volcanic activity, or human interference with the land. The susceptibility of an area to landslides can be influenced by its geology, slope steepness, vegetation cover, and water content in the soil.\n\n'
-                  'The Importance of Studying Landslides\n'
-                  'Studying landslides and their triggers is essential for predicting future events and implementing preventive measures. Understanding the factors that lead to landslides helps scientists develop models to forecast landslides and advise on land use planning and disaster preparedness strategies to mitigate their impact.\n\n'
-                  'Part 2: The Science Behind Landslides\n\n'
-                  'The science of landslides involves understanding the geological and environmental factors that contribute to slope instability. By studying these factors, researchers can better predict when and where landslides may occur.\n'
-                  'Understanding Slope Stability\n'
-                  'Slope stability is determined by the balance between the forces driving slope materials downward and the strength of the materials resisting movement. Factors that influence this balance include the type of earth materials, slope angle, water content, and the presence of weaknesses like faults or layered sediments.^\n\n'
-                  'Types of Landslides\n'
-                  'Landslides can vary widely in their movement and the materials involved. Common types include:\n'
-                  'Rockfalls - the free fall of rock from a steep slope.\n'
-                  'Slides - movements of rock or soil along a well-defined surface.\n'
-                  'Slumps - downward and outward movement of a mass on top of a concave upward sliding surface.\n'
-                  'Flows - movements in which the earth material behaves fluidly, often due to water saturation.\n\n'
-                  'Triggers of Landslides\n'
-                  'Several triggers can initiate landslides, including:\n'
-                  'Intense or prolonged rainfall.\n'
-                  'Earthquakes that shake loose unstable slopes.\n'
-                  'Volcanic eruptions that destabilize surrounding land.\n'
-                  'Human activities such as excavation, deforestation, and construction.\n\n'
-                  'Part 3: Measuring and Predicting Landslides\n\n'
-                  'Effective landslide risk management relies on accurately measuring and predicting where and when landslides might occur. This section discusses the tools and methodologies used in landslide assessment.\n\n'
-                  'Landslide Mapping and Assessment\n'
-                  'Landslide susceptibility mapping is a crucial tool for identifying areas at risk. These maps are created using historical data, geological surveys, and models of slope stability.\n\n'
-                  'Part 4: Landslide Preparedness and Safety Measures\n\n'
-                  'Being prepared for a landslide can significantly reduce the risks to life and property. This section provides essential guidelines and safety measures to help individuals and communities prepare for, survive, and recover from landslides.\n\n'
-                  'Before a Landslide: Preparation\n'
-                  'Understand your area'
-                  's landslide risk. Landslides are more likely to occur in areas where they have occurred before.\n'
-                  'Create an emergency preparedness kit with essential items such as water, food, medications, and important documents.\n'
-                  'Develop a family emergency plan that includes evacuation routes and safe meeting places.\n'
-                  'Consult with a professional for advice on appropriate preventive measures for your home, such as flexible pipe fittings to avoid gas or water leaks.\n\n'
-                  'During a Landslide: Safety Actions\n'
-                  'Evacuate immediately if you suspect imminent danger or if advised by authorities.\n'
-                  'Listen for unusual sounds that might indicate moving debris, such as trees cracking or boulders knocking together.\n'
-                  'If escape is not possible, curl into a tight ball and protect your head if you are inside the path of a landslide.\n'
-                  'Avoid river valleys and low-lying areas that may be susceptible to flooding after a landslide.\n'
-                  'After a Landslide: Recovery and Safety\n'
-                  'Stay away from the landslide area. There may be risk of additional slides.\n'
-                  'Check for injured or trapped people near the slide, without entering the direct slide area. Direct rescuers to their locations.\n'
-                  'Listen to local news and emergency stations for updates and instructions.\n'
-                  'Inspect foundations, chimneys, and surrounding land for damage.\n'
-                  '\nPart 5: The Role of Technology in Landslide Prediction and Response\n\n'
-                  'Advancements in technology have significantly improved our ability to predict and respond to landslides. From early warning systems to post-landslide recovery efforts, technology plays a crucial role in minimizing the impact of landslides on lives and property.\n\n'
-                  'Landslide Prediction and Monitoring\n'
-                  'Satellite imagery, aerial photography, and ground-based sensors are used to monitor areas susceptible to landslides, detecting changes in terrain and conditions that may indicate the risk of a landslide.\n\n'
-                  'Early Warning Systems\n'
-                  'Early warning systems, employing real-time data from weather stations and ground sensors, can alert communities to the risk of landslides, allowing for timely evacuations and preparations.\n\n'
-                  'Post-Landslide Response and Recovery\n'
-                  'Drones and LiDAR (Light Detection and Ranging) technology are used for rapid assessment of affected areas, helping to identify safe routes for responders and evaluate the extent of the damage for recovery planning.\n\n'
-                  'Conclusion\n\n'
-                  'Throughout this series, we'
-                  've explored the complex nature of landslides, from their underlying causes to the impact they'
-                  've had on communities and landscapes. We'
-                  've also discussed the critical role of technology in predicting and responding to these events and provided practical advice on preparedness and safety measures.\n\n'
-                  'Understanding landslides is crucial for reducing their impact on our lives and properties. While predicting landslides with precise accuracy remains a challenge, ongoing research and technological advancements continue to improve our ability to forecast such events and respond effectively. Preparedness, both at the individual and community levels, can significantly mitigate the risks associated with landslides.\n\n'
-                  'We encourage everyone to take landslide preparedness seriously and to stay informed about the latest developments in landslide science and safety protocols. Together, we can build more resilient communities capable of withstanding the challenges posed by these powerful natural phenomena\n\n',
-                  style: TextStyle(fontSize: 16, color: Colors.white),
-                ),
-                SizedBox(height: 20),
-                Text(
-                  'Reference:\n'
-                  'Vikipedia',
-                  style: TextStyle(fontSize: 12, color: Colors.grey),
-                )
-              ],
-            ),
-          ),
-        ),
-      ),
+      body: _currentQuestionIndex < _questions.length
+          ? Quiz(
+              question: _questions[_currentQuestionIndex],
+              choices: _choices[_currentQuestionIndex],
+              onAnswer: _answerQuestion,
+            )
+          : Result(score: _score, total: _questions.length),
     );
   }
 }

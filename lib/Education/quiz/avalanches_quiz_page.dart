@@ -1,105 +1,187 @@
+import 'package:first_app/Education/quiz/quiz.dart';
+import 'package:first_app/Education/quiz/result_page.dart';
 import 'package:flutter/material.dart';
 
-class AvalanchesQuizPage extends StatelessWidget {
+class AvalanchesQuizPage extends StatefulWidget {
+  @override
+  _AvalanchesQuizPageState createState() => _AvalanchesQuizPageState();
+}
+
+class _AvalanchesQuizPageState extends State<AvalanchesQuizPage> {
+  int _currentQuestionIndex = 0;
+  List<String> _questions = [
+    "1. What is an avalanche?",
+    "2. Which factor is most likely to trigger an avalanche?",
+    "3. What is the most dangerous type of avalanche?",
+    "4. Which layer in the snowpack is typically responsible for causing avalanches?",
+    "5. What time of day do avalanches most commonly occur?",
+    "6. What is a terrain trap in the context of avalanches?",
+    "7. What are the signs of avalanche danger?",
+    "8. What should you do if caught in an avalanche?",
+    "9. Which equipment is essential for avalanche safety?",
+    "10. What does an avalanche transceiver do?",
+    "11. What is the role of a probe in avalanche rescue?",
+    "12. How can trees affect an avalanche?",
+    "13. What is a cornice in relation to avalanches?",
+    "14. Which factor does not contribute to avalanche risk?",
+    "15. What is the safest way to cross a slope that may be prone to avalanches?",
+    "16. What is the main purpose of an avalanche airbag?",
+    "17. What should be avoided when traveling in avalanche-prone areas?",
+    "18. What does the term 'avalanche mitigation' refer to?",
+    "19. Which of the following is a natural trigger of avalanches?",
+    "20. What is a slab avalanche?"
+  ];
+
+  final List<List<String>> _choices = [
+    [
+      "A sudden release of snow, ice, and rocks down a mountain slope",
+      "A type of mountain found in cold regions",
+      "A weather pattern involving heavy snowfall",
+      "A method of skiing"
+    ],
+    [
+      "A loud noise",
+      "A change in temperature",
+      "Heavy snowfall",
+      "All of the above"
+    ],
+    [
+      "Slab avalanche",
+      "Loose snow avalanche",
+      "Wet avalanche",
+      "Ice avalanche"
+    ],
+    [
+      "The topmost layer",
+      "A weak layer buried beneath stronger layers",
+      "The bottom layer",
+      "The layer closest to the ground"
+    ],
+    ["Morning", "Afternoon", "Evening", "Night"],
+    [
+      "A feature that increases the severity of an avalanche",
+      "A device used to prevent avalanches",
+      "A safety feature designed to stop an avalanche",
+      "A type of equipment used in avalanche rescue"
+    ],
+    [
+      "Recent avalanche activity",
+      "Cracks in the snowpack",
+      "A whoompf sound",
+      "All of the above"
+    ],
+    [
+      "Try to swim to the surface",
+      "Stay still and wait for rescue",
+      "Dig yourself deeper",
+      "None of the above"
+    ],
+    ["Avalanche transceiver", "GPS device", "Cell phone", "Compass"],
+    [
+      "Sends a distress signal to satellites",
+      "Receives weather updates",
+      "Helps locate buried avalanche victims",
+      "Warns of impending avalanches"
+    ],
+    [
+      "To dig out buried victims",
+      "To detect movement under the snow",
+      "To locate victims under the snow",
+      "To provide oxygen to buried victims"
+    ],
+    [
+      "Increase its speed",
+      "Stop it completely",
+      "Have no effect",
+      "Slow it down or stop it"
+    ],
+    [
+      "A type of avalanche",
+      "A mass of snow overhanging a ridge",
+      "A safety device",
+      "A rescue technique"
+    ],
+    ["Slope angle", "Snow temperature", "Wind speed", "The color of the snow"],
+    [
+      "Straight down the slope",
+      "In a zigzag pattern",
+      "One person at a time",
+      "In a group for safety"
+    ],
+    [
+      "To provide air to breathe",
+      "To float on top of the avalanche",
+      "To send a GPS signal",
+      "To alert rescue teams"
+    ],
+    [
+      "Steep slopes",
+      "Areas with sparse vegetation",
+      "Areas below freezing point",
+      "All of the above"
+    ],
+    [
+      "Predicting when and where an avalanche will occur",
+      "Taking steps to reduce the impact of avalanches",
+      "Studying avalanches after they occur",
+      "None of the above"
+    ],
+    ["Snowmobiles", "Skiing", "Heavy snowfall", "Explosives"],
+    [
+      "An avalanche that occurs on flat terrain",
+      "A release of a cohesive layer of snow",
+      "An avalanche consisting only of loose snow",
+      "A small avalanche that is triggered by animals"
+    ]
+  ];
+
+  final List<int> _correctAnswers = [
+    0,
+    3,
+    0,
+    1,
+    1,
+    0,
+    3,
+    0,
+    0,
+    2,
+    2,
+    3,
+    1,
+    3,
+    2,
+    1,
+    0,
+    1,
+    2,
+    1
+  ];
+
+  int _score = 0;
+
+  void _answerQuestion(int selectedAnswer) {
+    if (selectedAnswer == _correctAnswers[_currentQuestionIndex]) {
+      _score++;
+    }
+    setState(() {
+      _currentQuestionIndex++;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Landslide Information'),
+        title: Text('Avalanches Quiz'),
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  'LANDSLIDES\n',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: const Color.fromARGB(255, 255, 255, 255),
-                  ),
-                ),
-                SizedBox(height: 20),
-                Text(
-                  '\nPart 1: Introduction to Landslides\n\n'
-                  'Landslides, a natural disaster that can occur with little warning, involve the movement of rock, earth, or debris down a slope. They can result from various factors, including heavy rains, earthquakes, volcanic activity, and human activities that destabilize the ground. Understanding what landslides are and why they happen is crucial for reducing their impact on human lives and property.\n\n'
-                  'What Are Landslides?\n'
-                  'A landslide occurs when the stability of a slope fails, causing materials such as soil, rock, or debris to move downwards. This movement can range from slow to rapid, posing significant risks to areas below the slope. Landslides can be triggered by natural processes like intense rainfall or human activities such as deforestation and construction.\n\n'
-                  'Why Do Landslides Occur?\n'
-                  'The Earth'
-                  's surface is constantly changing, and landslides are a part of this dynamic process. They often occur in response to specific triggers like heavy rainfall, rapid snowmelt, earthquakes, volcanic activity, or human interference with the land. The susceptibility of an area to landslides can be influenced by its geology, slope steepness, vegetation cover, and water content in the soil.\n\n'
-                  'The Importance of Studying Landslides\n'
-                  'Studying landslides and their triggers is essential for predicting future events and implementing preventive measures. Understanding the factors that lead to landslides helps scientists develop models to forecast landslides and advise on land use planning and disaster preparedness strategies to mitigate their impact.\n\n'
-                  'Part 2: The Science Behind Landslides\n\n'
-                  'The science of landslides involves understanding the geological and environmental factors that contribute to slope instability. By studying these factors, researchers can better predict when and where landslides may occur.\n'
-                  'Understanding Slope Stability\n'
-                  'Slope stability is determined by the balance between the forces driving slope materials downward and the strength of the materials resisting movement. Factors that influence this balance include the type of earth materials, slope angle, water content, and the presence of weaknesses like faults or layered sediments.^\n\n'
-                  'Types of Landslides\n'
-                  'Landslides can vary widely in their movement and the materials involved. Common types include:\n'
-                  'Rockfalls - the free fall of rock from a steep slope.\n'
-                  'Slides - movements of rock or soil along a well-defined surface.\n'
-                  'Slumps - downward and outward movement of a mass on top of a concave upward sliding surface.\n'
-                  'Flows - movements in which the earth material behaves fluidly, often due to water saturation.\n\n'
-                  'Triggers of Landslides\n'
-                  'Several triggers can initiate landslides, including:\n'
-                  'Intense or prolonged rainfall.\n'
-                  'Earthquakes that shake loose unstable slopes.\n'
-                  'Volcanic eruptions that destabilize surrounding land.\n'
-                  'Human activities such as excavation, deforestation, and construction.\n\n'
-                  'Part 3: Measuring and Predicting Landslides\n\n'
-                  'Effective landslide risk management relies on accurately measuring and predicting where and when landslides might occur. This section discusses the tools and methodologies used in landslide assessment.\n\n'
-                  'Landslide Mapping and Assessment\n'
-                  'Landslide susceptibility mapping is a crucial tool for identifying areas at risk. These maps are created using historical data, geological surveys, and models of slope stability.\n\n'
-                  'Part 4: Landslide Preparedness and Safety Measures\n\n'
-                  'Being prepared for a landslide can significantly reduce the risks to life and property. This section provides essential guidelines and safety measures to help individuals and communities prepare for, survive, and recover from landslides.\n\n'
-                  'Before a Landslide: Preparation\n'
-                  'Understand your area'
-                  's landslide risk. Landslides are more likely to occur in areas where they have occurred before.\n'
-                  'Create an emergency preparedness kit with essential items such as water, food, medications, and important documents.\n'
-                  'Develop a family emergency plan that includes evacuation routes and safe meeting places.\n'
-                  'Consult with a professional for advice on appropriate preventive measures for your home, such as flexible pipe fittings to avoid gas or water leaks.\n\n'
-                  'During a Landslide: Safety Actions\n'
-                  'Evacuate immediately if you suspect imminent danger or if advised by authorities.\n'
-                  'Listen for unusual sounds that might indicate moving debris, such as trees cracking or boulders knocking together.\n'
-                  'If escape is not possible, curl into a tight ball and protect your head if you are inside the path of a landslide.\n'
-                  'Avoid river valleys and low-lying areas that may be susceptible to flooding after a landslide.\n'
-                  'After a Landslide: Recovery and Safety\n'
-                  'Stay away from the landslide area. There may be risk of additional slides.\n'
-                  'Check for injured or trapped people near the slide, without entering the direct slide area. Direct rescuers to their locations.\n'
-                  'Listen to local news and emergency stations for updates and instructions.\n'
-                  'Inspect foundations, chimneys, and surrounding land for damage.\n'
-                  '\nPart 5: The Role of Technology in Landslide Prediction and Response\n\n'
-                  'Advancements in technology have significantly improved our ability to predict and respond to landslides. From early warning systems to post-landslide recovery efforts, technology plays a crucial role in minimizing the impact of landslides on lives and property.\n\n'
-                  'Landslide Prediction and Monitoring\n'
-                  'Satellite imagery, aerial photography, and ground-based sensors are used to monitor areas susceptible to landslides, detecting changes in terrain and conditions that may indicate the risk of a landslide.\n\n'
-                  'Early Warning Systems\n'
-                  'Early warning systems, employing real-time data from weather stations and ground sensors, can alert communities to the risk of landslides, allowing for timely evacuations and preparations.\n\n'
-                  'Post-Landslide Response and Recovery\n'
-                  'Drones and LiDAR (Light Detection and Ranging) technology are used for rapid assessment of affected areas, helping to identify safe routes for responders and evaluate the extent of the damage for recovery planning.\n\n'
-                  'Conclusion\n\n'
-                  'Throughout this series, we'
-                  've explored the complex nature of landslides, from their underlying causes to the impact they'
-                  've had on communities and landscapes. We'
-                  've also discussed the critical role of technology in predicting and responding to these events and provided practical advice on preparedness and safety measures.\n\n'
-                  'Understanding landslides is crucial for reducing their impact on our lives and properties. While predicting landslides with precise accuracy remains a challenge, ongoing research and technological advancements continue to improve our ability to forecast such events and respond effectively. Preparedness, both at the individual and community levels, can significantly mitigate the risks associated with landslides.\n\n'
-                  'We encourage everyone to take landslide preparedness seriously and to stay informed about the latest developments in landslide science and safety protocols. Together, we can build more resilient communities capable of withstanding the challenges posed by these powerful natural phenomena\n\n',
-                  style: TextStyle(fontSize: 16, color: Colors.white),
-                ),
-                SizedBox(height: 20),
-                Text(
-                  'Reference:\n'
-                  'Vikipedia',
-                  style: TextStyle(fontSize: 12, color: Colors.grey),
-                )
-              ],
-            ),
-          ),
-        ),
-      ),
+      body: _currentQuestionIndex < _questions.length
+          ? Quiz(
+              question: _questions[_currentQuestionIndex],
+              choices: _choices[_currentQuestionIndex],
+              onAnswer: _answerQuestion,
+            )
+          : Result(score: _score, total: _questions.length),
     );
   }
 }

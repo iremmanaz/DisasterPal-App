@@ -11,7 +11,7 @@ class QuizPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Information'),
+        title: Text('Quiz Information'),
       ),
       body: Center(
         child: GridView.count(
@@ -24,9 +24,7 @@ class QuizPage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          EarthquakeQuizPage()), // EarthquakeInfoPage'a geçiş
+                  MaterialPageRoute(builder: (context) => EarthquakeQuizPage()),
                 );
               },
               child: Text('Earthquake'),
