@@ -18,8 +18,10 @@ class _SignupPageState extends State<SignupPage> {
       appBar: AppBar(
         title: Text(
           "Sign Up Page",
-          style: TextStyle(color: Colors.white), // AppBar yazı rengi
+          style: TextStyle(
+              color: Color.fromARGB(255, 255, 255, 255)), // AppBar yazı rengi
         ),
+        backgroundColor: const Color.fromARGB(255, 49, 49, 49),
       ),
       body: SingleChildScrollView(
         child: Center(

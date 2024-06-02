@@ -5,7 +5,11 @@ class FeaturesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Features'),
+        title: Text(
+          'Features',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: const Color.fromARGB(255, 49, 49, 49),
       ),
       body: Stack(
         children: [

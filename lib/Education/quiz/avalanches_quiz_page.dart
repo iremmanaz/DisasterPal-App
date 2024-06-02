@@ -173,7 +173,9 @@ class _AvalanchesQuizPageState extends State<AvalanchesQuizPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Avalanches Quiz'),
+        title: Text('Avalanches Quiz',
+            style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+        backgroundColor: const Color.fromARGB(255, 49, 49, 49),
       ),
       body: _currentQuestionIndex < _questions.length
           ? Quiz(

@@ -128,7 +128,9 @@ class _FloodQuizPageState extends State<FloodQuizPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flood Quiz'),
+        title: Text('Flood Quiz',
+            style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+        backgroundColor: const Color.fromARGB(255, 49, 49, 49),
       ),
       body: _currentQuestionIndex < _questions.length
           ? Quiz(

@@ -5,7 +5,11 @@ class EducationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Education'),
+        title: Text(
+          'Education',
+          style: TextStyle(color: Colors.white), // Yazı rengi
+        ),
+        backgroundColor: const Color.fromARGB(255, 49, 49, 49),
       ),
       body: Stack(
         children: [
@@ -20,15 +24,19 @@ class EducationPage extends StatelessWidget {
           ),
           Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment
-                  .center, // Butonların dikey ortalamaya göre hizalanması
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 SizedBox(height: 100), // Üst boşluk ekledik
                 ElevatedButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/information');
                   },
-                  child: Text('Information'),
+                  child: Text(
+                    'Information',
+                    style: TextStyle(
+                        color:
+                            const Color.fromARGB(255, 0, 0, 0)), // Yazı rengi
+                  ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 255, 205, 56),
                     padding:
@@ -43,7 +51,12 @@ class EducationPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, '/quiz');
                   },
-                  child: Text('Quiz'),
+                  child: Text(
+                    'Quiz',
+                    style: TextStyle(
+                        color:
+                            const Color.fromARGB(255, 0, 0, 0)), // Yazı rengi
+                  ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 255, 205, 56),
                     padding:

@@ -6,6 +6,7 @@ class PsychologicalHelpPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Psychological Help'),
+        backgroundColor: const Color.fromARGB(255, 49, 49, 49),
       ),
       body: Center(
         child: Column(

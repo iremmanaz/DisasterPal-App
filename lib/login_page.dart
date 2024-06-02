@@ -9,7 +9,9 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Login Page", style: TextStyle(color: Colors.white)),
+        title: Text("Login Page",
+            style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+        backgroundColor: const Color.fromARGB(255, 49, 49, 49),
       ),
       body: Center(
         child: SingleChildScrollView(

@@ -5,7 +5,9 @@ class FireInfoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Fire Information'),
+        title: Text('Fire Information',
+            style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+        backgroundColor: const Color.fromARGB(255, 49, 49, 49),
       ),
       body: Center(
         child: Padding(

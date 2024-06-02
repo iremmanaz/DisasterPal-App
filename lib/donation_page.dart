@@ -6,6 +6,7 @@ class DonationPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Donation'),
+        backgroundColor: const Color.fromARGB(255, 49, 49, 49),
       ),
       body: Center(
         child: Text('Donation Page Content'),

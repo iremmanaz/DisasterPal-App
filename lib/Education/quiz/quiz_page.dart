@@ -11,112 +11,85 @@ class QuizPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Quiz Information'),
+        title: Text(
+          'Quiz Information',
+          style: TextStyle(color: Colors.white), // Yazı rengi
+        ),
+        backgroundColor: const Color.fromARGB(255, 49, 49, 49),
       ),
-      body: Center(
-        child: GridView.count(
-          crossAxisCount: 2,
-          mainAxisSpacing: 30,
-          crossAxisSpacing: 20,
-          padding: EdgeInsets.all(20),
-          children: <Widget>[
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => EarthquakeQuizPage()),
-                );
-              },
-              child: Text('Earthquake'),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 255, 205, 56),
+      body: Stack(
+        children: [
+          Positioned(
+            top: 10,
+            left: 10,
+            child: Image.asset(
+              'C:/Users/iremm/Desktop/flutter_projects/first_app/images/logo.png',
+              width: 150,
+              height: 150,
+            ),
+          ),
+          Padding(
+            padding:
+                const EdgeInsets.only(top: 110), // Butonları aşağı kaydırma
+            child: Center(
+              child: GridView.count(
+                crossAxisCount: 2,
+                mainAxisSpacing: 30,
+                crossAxisSpacing: 20,
                 padding: EdgeInsets.all(20),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
+                children: <Widget>[
+                  _buildImageButton(context, EarthquakeQuizPage(), 'Earthquake',
+                      'C:/Users/iremm/Desktop/flutter_projects/first_app/images/earthquake.jpg'),
+                  _buildImageButton(context, FloodQuizPage(), 'Flood',
+                      'C:/Users/iremm/Desktop/flutter_projects/first_app/images/flood.jpg'),
+                  _buildImageButton(context, LandslideQuizPage(), 'Landslide',
+                      'C:/Users/iremm/Desktop/flutter_projects/first_app/images/landslide.jpeg'),
+                  _buildImageButton(context, AvalanchesQuizPage(), 'Avalanches',
+                      'C:/Users/iremm/Desktop/flutter_projects/first_app/images/snowslide.jpeg'),
+                  _buildImageButton(context, StormQuizPage(), 'Storm',
+                      'C:/Users/iremm/Desktop/flutter_projects/first_app/images/storm.jpg'),
+                  _buildImageButton(context, FireQuizPage(), 'Fire',
+                      'C:/Users/iremm/Desktop/flutter_projects/first_app/images/fire.jpg'),
+                ],
               ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => FloodQuizPage()),
-                );
-              },
-              child: Text('Flood'),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 255, 205, 56),
-                padding: EdgeInsets.all(20),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => LandslideQuizPage()),
-                );
-              },
-              child: Text('Landslide'),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 255, 205, 56),
-                padding: EdgeInsets.all(20),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AvalanchesQuizPage()),
-                );
-              },
-              child: Text('Avalanches'),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 255, 205, 56),
-                padding: EdgeInsets.all(20),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => StormQuizPage()),
-                );
-              },
-              child: Text('Storm'),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 255, 205, 56),
-                padding: EdgeInsets.all(20),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => FireQuizPage()),
-                );
-              },
-              child: Text('Fire'),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 255, 205, 56),
-                padding: EdgeInsets.all(20),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-              ),
-            ),
-          ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildImageButton(
+      BuildContext context, Widget page, String title, String imagePath) {
+    return ElevatedButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => page),
+        );
+      },
+      child: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(imagePath),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Center(
+          child: Text(
+            title,
+            style: TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ),
+      style: ElevatedButton.styleFrom(
+        padding: EdgeInsets.zero,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0),
         ),
       ),
     );
