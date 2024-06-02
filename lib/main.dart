@@ -1,9 +1,16 @@
+import 'package:first_app/Education/information/information_page.dart';
+import 'package:first_app/Education/quiz/quiz_page.dart';
 import 'package:flutter/material.dart';
 import 'login_page.dart';
 import 'signup_page.dart';
 import 'features_page.dart';
 import 'psychological_help_page.dart';
 import 'chat_page.dart';
+import 'home_page.dart';
+import 'Education/education_page.dart';
+import 'location_page.dart';
+import 'needs_receiving_page.dart';
+import 'donation_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,9 +20,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'DisasterPal',
       theme: ThemeData(
-        primarySwatch: Colors.grey, // Set primarySwatch to grey
-        scaffoldBackgroundColor:
-            Colors.grey[200], // Set scaffold background color to a lighter grey
+        primarySwatch: Colors.grey,
+        scaffoldBackgroundColor: Color.fromARGB(255, 49, 49, 49),
       ),
       initialRoute: '/',
       routes: {
@@ -25,43 +31,13 @@ class MyApp extends StatelessWidget {
         '/features': (context) => FeaturesPage(),
         '/psychological_help': (context) => PsychologicalHelpPage(),
         '/chat': (context) => ChatPage(),
+        '/education': (context) => EducationPage(),
+        '/location': (context) => LocationPage(),
+        '/needs_receiving': (context) => NeedsReceivingPage(),
+        '/donation': (context) => DonationPage(),
+        '/information': (context) => InformationPage(),
+        '/quiz': (context) => QuizPage(),
       },
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/login');
-              },
-              child: Text('LOG IN'),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 255, 205, 56),
-                padding: EdgeInsets.symmetric(horizontal: 100, vertical: 40),
-              ),
-            ),
-            SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/signup');
-              },
-              child: Text('SIGN UP'),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 255, 205, 56),
-                padding: EdgeInsets.symmetric(horizontal: 100, vertical: 40),
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

@@ -24,7 +24,7 @@ class FeaturesPage extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Education page navigation
+                Navigator.pushNamed(context, '/education');
               },
               child: Text('Education'),
               style: ElevatedButton.styleFrom(
@@ -35,7 +35,7 @@ class FeaturesPage extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Location page navigation
+                Navigator.pushNamed(context, '/location');
               },
               child: Text('Location'),
               style: ElevatedButton.styleFrom(
@@ -46,7 +46,7 @@ class FeaturesPage extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Needs Receiving page navigation
+                Navigator.pushNamed(context, '/needs_receiving');
               },
               child: Text('Needs Receiving'),
               style: ElevatedButton.styleFrom(
@@ -57,7 +57,7 @@ class FeaturesPage extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Donation page navigation
+                Navigator.pushNamed(context, '/donation');
               },
               child: Text('Donation'),
               style: ElevatedButton.styleFrom(

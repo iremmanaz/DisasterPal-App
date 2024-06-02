@@ -54,8 +54,12 @@ class _SignupPageState extends State<SignupPage> {
             ),
             ElevatedButton(
               onPressed: () {
-                _signUp();
-                Navigator.pushNamed(context, '/login');
+                if (_validateInputs()) {
+                  _signUp();
+                  Navigator.pushNamed(context, '/login');
+                } else {
+                  _showErrorDialog();
+                }
               },
               child: Text('Sign Up'),
               style: ElevatedButton.styleFrom(
@@ -69,11 +73,34 @@ class _SignupPageState extends State<SignupPage> {
     );
   }
 
+  bool _validateInputs() {
+    return emailController.text.isNotEmpty &&
+        passwordController.text.isNotEmpty;
+  }
+
   void _signUp() {
     String email = emailController.text;
     String password = passwordController.text;
     UserData newUser = UserData(email: email, password: password);
     registeredUsers
         .add(newUser); // Add the new user to the list of registered users
+  }
+
+  void _showErrorDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: Text('Email and Password cannot be empty.'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }
