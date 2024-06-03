@@ -81,7 +81,9 @@ class QuizPage extends StatelessWidget {
           child: Text(
             title,
             style: TextStyle(
-                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
+                color: Color.fromARGB(255, 255, 255, 255),
+                fontWeight: FontWeight.bold,
+                fontSize: 16),
             textAlign: TextAlign.center,
           ),
         ),

@@ -33,8 +33,8 @@ class Quiz extends StatelessWidget {
                 onPressed: () => onAnswer(idx),
                 child: Text(val,
                     style: TextStyle(
-                        color: const Color.fromARGB(255, 255, 255,
-                            255))), // Set button text color to black
+                        color: Color.fromARGB(
+                            255, 0, 0, 0))), // Set button text color to black
               ),
             );
           }).toList(),

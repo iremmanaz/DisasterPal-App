@@ -8,7 +8,7 @@ import 'psychological_help_page.dart';
 import 'chat_page.dart';
 import 'home_page.dart';
 import 'Education/education_page.dart';
-import 'location_page.dart';
+import 'Location/location_page.dart';
 import 'needs_receiving_page.dart';
 import 'donation_page.dart';
 
