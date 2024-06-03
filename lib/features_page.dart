@@ -37,7 +37,7 @@ class FeaturesPage extends StatelessWidget {
                             0)), // Yazı rengini beyaz olarak ayarladım
                   ),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.yellow,
+                    backgroundColor: const Color.fromARGB(255, 255, 205, 56),
                     padding: EdgeInsets.symmetric(horizontal: 70, vertical: 40),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -56,7 +56,7 @@ class FeaturesPage extends StatelessWidget {
                             0)), // Yazı rengini beyaz olarak ayarladım
                   ),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.yellow,
+                    backgroundColor: const Color.fromARGB(255, 255, 205, 56),
                     padding:
                         EdgeInsets.symmetric(horizontal: 100, vertical: 40),
                     shape: RoundedRectangleBorder(
@@ -76,7 +76,7 @@ class FeaturesPage extends StatelessWidget {
                             0)), // Yazı rengini beyaz olarak ayarladım
                   ),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.yellow,
+                    backgroundColor: const Color.fromARGB(255, 255, 205, 56),
                     padding:
                         EdgeInsets.symmetric(horizontal: 105, vertical: 40),
                     shape: RoundedRectangleBorder(
@@ -96,7 +96,7 @@ class FeaturesPage extends StatelessWidget {
                             0)), // Yazı rengini beyaz olarak ayarladım
                   ),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.yellow,
+                    backgroundColor: const Color.fromARGB(255, 255, 205, 56),
                     padding: EdgeInsets.symmetric(horizontal: 80, vertical: 40),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -115,7 +115,7 @@ class FeaturesPage extends StatelessWidget {
                             0)), // Yazı rengini beyaz olarak ayarladım
                   ),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.yellow,
+                    backgroundColor: const Color.fromARGB(255, 255, 205, 56),
                     padding:
                         EdgeInsets.symmetric(horizontal: 105, vertical: 40),
                     shape: RoundedRectangleBorder(
