@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'User_data.dart'; // Import the UserData class
+import 'User_data.dart'; // UserData sınıfını içeri aktar
+import 'Database_Helper.dart'; // DatabaseHelper sınıfını içeri aktar
 
 class SignupPage extends StatefulWidget {
   @override
@@ -15,7 +16,8 @@ class _SignupPageState extends State<SignupPage> {
   final TextEditingController surnameController = TextEditingController();
   final TextEditingController nicknameController = TextEditingController();
   final TextEditingController addressController = TextEditingController();
-  final TextEditingController birth_dateController = TextEditingController();
+  final TextEditingController birthDateController = TextEditingController();
+  final TextEditingController membershipController = TextEditingController();
 
   String selectedMembershipType = 'Select Membership Type';
   List<String> membershipTypes = [
@@ -51,12 +53,46 @@ class _SignupPageState extends State<SignupPage> {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  controller: nicknameController, // Controller for name input
+                child: DropdownButtonFormField<String>(
+                  value: selectedMembershipType,
+                  items: [
+                    DropdownMenuItem(
+                      value: 'Select Membership Type',
+                      child: Text('Select Membership Type'),
+                    ),
+                    ...membershipTypes.map((type) {
+                      return DropdownMenuItem<String>(
+                        value: type,
+                        child: Text(type),
+                      );
+                    }).toList(),
+                  ],
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      selectedMembershipType = newValue!;
+                    });
+                  },
                   decoration: InputDecoration(
-                    labelText: 'Nickname', // Label for name input
+                    labelText: 'Membership Type',
                     border: OutlineInputBorder(),
-                    labelStyle: TextStyle(color: Colors.white),
+                    labelStyle:
+                        TextStyle(color: const Color.fromARGB(255, 49, 49, 49)),
+                    filled: true, // Arka planı doldur
+                    fillColor: const Color.fromARGB(
+                        255, 49, 49, 49), // Arka plan rengi
+                  ),
+                  style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  controller: nicknameController,
+                  decoration: InputDecoration(
+                    labelText: 'Nickname',
+                    border: OutlineInputBorder(),
+                    labelStyle:
+                        TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
                   ),
                   style: TextStyle(color: Colors.white),
                 ),
@@ -88,7 +124,7 @@ class _SignupPageState extends State<SignupPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
-                  controller: birth_dateController, // Controller for name input
+                  controller: birthDateController, // Controller for name input
                   decoration: InputDecoration(
                     labelText: 'Birth Date', // Label for name input
                     border: OutlineInputBorder(),
@@ -162,15 +198,12 @@ class _SignupPageState extends State<SignupPage> {
                     _showErrorDialog();
                   }
                 },
-                child: Text('Sign Up',
-                    style:
-                        TextStyle(color: Colors.black)), // Sign Up yazı rengi
+                child: Text('Sign Up', style: TextStyle(color: Colors.black)),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 255, 205, 56),
                   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(
-                        10), // Kare şeklini burada belirliyoruz
+                    borderRadius: BorderRadius.circular(10),
                   ),
                 ),
               ),
@@ -190,19 +223,25 @@ class _SignupPageState extends State<SignupPage> {
     String nickname = nicknameController.text;
     String name = nameController.text;
     String surname = surnameController.text;
-    String birth_date = birth_dateController.text;
+    String birth_date = birthDateController.text;
     String address = addressController.text;
     String email = emailController.text;
     String password = passwordController.text;
+    String membershipType = selectedMembershipType; // Seçilen üyelik türü
     UserData newUser = UserData(
-        nickname: nickname,
-        name: name,
-        surname: surname,
-        birth_date: birth_date,
-        address: address,
-        email: email,
-        password: password);
+      nickname: nickname,
+      name: name,
+      surname: surname,
+      birth_date: birth_date,
+      address: address,
+      email: email,
+      password: password,
+      membershipType: membershipType, // Üyelik türü bilgisini ekle
+    );
     registeredUsers.add(newUser);
+
+    // Veritabanına kaydetme
+    DatabaseHelper.instance.insertUser(newUser);
   }
 
   void _showErrorDialog() {

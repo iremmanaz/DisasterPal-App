@@ -1,5 +1,7 @@
+import 'package:first_app/features_page.dart';
+import 'package:first_app/sign%20up%20and%20log%20in/signup_page.dart';
 import 'package:flutter/material.dart';
-import 'User_data.dart'; // Import the UserData class and registeredUsers list
+import 'user_data.dart'; // Import the UserData class and registeredUsers list
 
 class LoginPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -120,3 +122,26 @@ class LoginPage extends StatelessWidget {
     return false; // Invalid credentials
   }
 }
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: LoginPage(),
+      routes: {
+        '/features': (context) => FeaturesPage(),
+        '/signup': (context) => SignupPage(),
+      },
+    );
+  }
+}
+
+// Define FeaturesPage and SignupPage widgets as needed
