@@ -90,7 +90,7 @@ class FloodInfoPage extends StatelessWidget {
                 SizedBox(height: 20),
                 Text(
                   'Reference:\n'
-                  'Vikipedia',
+                  'Wikipedia',
                   style: TextStyle(fontSize: 12, color: Colors.grey),
                 )
               ],

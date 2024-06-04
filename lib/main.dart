@@ -1,8 +1,8 @@
 import 'package:first_app/Education/information/information_page.dart';
 import 'package:first_app/Education/quiz/quiz_page.dart';
 import 'package:flutter/material.dart';
-import 'login_page.dart';
-import 'signup_page.dart';
+import 'sign up and log in/login_page.dart';
+import 'sign up and log in/signup_page.dart';
 import 'features_page.dart';
 import 'psychological_help_page.dart';
 import 'chat_page.dart';

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:first_app/sign%20up%20and%20log%20in/User_data.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -67,25 +68,25 @@ class DatabaseHelper {
     return result;
   }
 
-  Future<int> getCount() async {
-    Database db = await this.database;
-    List<Map<String, dynamic>> x =
-        await db.rawQuery('SELECT COUNT (*) from $tableName');
-    int result = Sqflite.firstIntValue(x)!;
+  static Future<int> insertUserData(UserData userData) async {
+    Database db = await DatabaseHelper().database;
+    int result = await db.insert('users', userData.toMap());
     return result;
   }
-}
 
-class User {
-  String email;
-  String password;
-
-  User({required this.email, required this.password});
-
-  static List<User> getUsers() {
-    return [
-      User(email: 'iremmanaz@hotmail.com', password: '123456'),
-      // Add more registered users here if needed
-    ];
+  static Future<List<UserData>> getUserDataList() async {
+    Database db = await DatabaseHelper().database;
+    List<Map<String, dynamic>> maps = await db.query('users');
+    return List.generate(maps.length, (i) {
+      return UserData(
+        nickname: maps[i]['nickname'],
+        name: maps[i]['name'],
+        surname: maps[i]['surname'],
+        birth_date: maps[i]['birth_date'],
+        address: maps[i]['address'],
+        email: maps[i]['email'],
+        password: maps[i]['password'],
+      );
+    });
   }
 }

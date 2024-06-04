@@ -11,6 +11,19 @@ class _SignupPageState extends State<SignupPage> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController surnameController = TextEditingController();
+  final TextEditingController nicknameController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
+  final TextEditingController birth_dateController = TextEditingController();
+
+  String selectedMembershipType = 'Select Membership Type';
+  List<String> membershipTypes = [
+    'Psychiatrist',
+    'Psychologist',
+    'Disaster Specialist',
+    'Disaster Victim',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +48,66 @@ class _SignupPageState extends State<SignupPage> {
                 'C:/Users/iremm/Desktop/flutter_projects/first_app/images/logo.png',
                 width: 300,
                 height: 300,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  controller: nicknameController, // Controller for name input
+                  decoration: InputDecoration(
+                    labelText: 'Nickname', // Label for name input
+                    border: OutlineInputBorder(),
+                    labelStyle: TextStyle(color: Colors.white),
+                  ),
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  controller: nameController, // Controller for name input
+                  decoration: InputDecoration(
+                    labelText: 'Name', // Label for name input
+                    border: OutlineInputBorder(),
+                    labelStyle: TextStyle(color: Colors.white),
+                  ),
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  controller: surnameController, // Controller for name input
+                  decoration: InputDecoration(
+                    labelText: 'Surname', // Label for name input
+                    border: OutlineInputBorder(),
+                    labelStyle: TextStyle(color: Colors.white),
+                  ),
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  controller: birth_dateController, // Controller for name input
+                  decoration: InputDecoration(
+                    labelText: 'Birth Date', // Label for name input
+                    border: OutlineInputBorder(),
+                    labelStyle: TextStyle(color: Colors.white),
+                  ),
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  controller: addressController, // Controller for name input
+                  decoration: InputDecoration(
+                    labelText: 'Address', // Label for name input
+                    border: OutlineInputBorder(),
+                    labelStyle: TextStyle(color: Colors.white),
+                  ),
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -114,9 +187,21 @@ class _SignupPageState extends State<SignupPage> {
   }
 
   void _signUp() {
+    String nickname = nicknameController.text;
+    String name = nameController.text;
+    String surname = surnameController.text;
+    String birth_date = birth_dateController.text;
+    String address = addressController.text;
     String email = emailController.text;
     String password = passwordController.text;
-    UserData newUser = UserData(email: email, password: password);
+    UserData newUser = UserData(
+        nickname: nickname,
+        name: name,
+        surname: surname,
+        birth_date: birth_date,
+        address: address,
+        email: email,
+        password: password);
     registeredUsers.add(newUser);
   }
 

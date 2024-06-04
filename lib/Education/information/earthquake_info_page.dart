@@ -137,7 +137,7 @@ class EarthquakeInfoPage extends StatelessWidget {
                 SizedBox(height: 20),
                 Text(
                   'Kaynakça:\n'
-                  'Vikipedia',
+                  'Wikipedia',
                   style: TextStyle(fontSize: 12, color: Colors.grey),
                 )
               ],
