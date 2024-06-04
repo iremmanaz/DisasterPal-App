@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:first_app/Location/location_service.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart';
 import 'package:timezone/data/latest.dart' as tz;
@@ -21,16 +22,10 @@ class _LocationUpdatePageState extends State<LocationUpdatePage> {
 
   Future<void> _getLocation() async {
     try {
-      Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high,
-        forceAndroidLocationManager:
-            true, // Force using Android Location Manager
-      );
-
+      Position position = await LocationService().getCurrentLocation();
       final turkeyTimeZone = tz.getLocation('Europe/Istanbul');
       String dateTime = DateFormat('yyyy-MM-dd – kk:mm')
           .format(tz.TZDateTime.from(DateTime.now(), turkeyTimeZone));
-
       setState(() {
         _location =
             'Lat: ${position.latitude}, Lon: ${position.longitude}\nDate: $dateTime';
