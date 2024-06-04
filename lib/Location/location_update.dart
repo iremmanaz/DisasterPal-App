@@ -55,6 +55,7 @@ class _LocationUpdatePageState extends State<LocationUpdatePage> {
         children: [
           Expanded(
             child: ListView.separated(
+              reverse: true, // Yeni verilerin en üstte görünmesini sağlar
               itemCount: _locationData.getLocations().length,
               itemBuilder: (context, index) {
                 return ListTile(
