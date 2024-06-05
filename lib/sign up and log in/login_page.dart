@@ -143,5 +143,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// Define FeaturesPage and SignupPage widgets as needed
