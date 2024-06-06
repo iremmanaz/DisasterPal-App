@@ -113,9 +113,12 @@ class _EarthquakeQuizPageState extends State<EarthquakeQuizPage> {
     2
   ];
 
+  List<int> _selectedAnswers = [];
+
   int _score = 0;
 
   void _answerQuestion(int selectedAnswer) {
+    _selectedAnswers.add(selectedAnswer);
     if (selectedAnswer == _correctAnswers[_currentQuestionIndex]) {
       _score++;
     }
@@ -137,8 +140,18 @@ class _EarthquakeQuizPageState extends State<EarthquakeQuizPage> {
               question: _questions[_currentQuestionIndex],
               choices: _choices[_currentQuestionIndex],
               onAnswer: _answerQuestion,
+              currentQuestionIndex: _currentQuestionIndex,
+              selectedAnswers: _selectedAnswers,
+              correctAnswers: _correctAnswers,
             )
-          : Result(score: _score, total: _questions.length),
+          : Result(
+              score: _score,
+              total: _questions.length,
+              questions: _questions,
+              selectedAnswers: _selectedAnswers,
+              correctAnswers: _correctAnswers,
+              choices: _choices,
+            ),
     );
   }
 }

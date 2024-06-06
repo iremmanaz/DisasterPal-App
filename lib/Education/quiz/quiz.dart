@@ -4,8 +4,18 @@ class Quiz extends StatelessWidget {
   final String question;
   final List<String> choices;
   final Function(int) onAnswer;
+  final int currentQuestionIndex;
+  final List<int> selectedAnswers;
+  final List<int> correctAnswers;
 
-  Quiz({required this.question, required this.choices, required this.onAnswer});
+  Quiz({
+    required this.question,
+    required this.choices,
+    required this.onAnswer,
+    required this.currentQuestionIndex,
+    required this.selectedAnswers,
+    required this.correctAnswers,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +43,17 @@ class Quiz extends StatelessWidget {
                 onPressed: () => onAnswer(idx),
                 child: Text(val,
                     style: TextStyle(
-                        color: Color.fromARGB(
-                            255, 0, 0, 0))), // Set button text color to black
+                        color: Colors.black)), // Set button text color to black
+                style: ElevatedButton.styleFrom(
+                  backgroundColor:
+                      selectedAnswers.length > currentQuestionIndex &&
+                              selectedAnswers[currentQuestionIndex] == idx
+                          ? (selectedAnswers[currentQuestionIndex] ==
+                                  correctAnswers[currentQuestionIndex]
+                              ? Colors.green
+                              : Colors.red)
+                          : null,
+                ),
               ),
             );
           }).toList(),

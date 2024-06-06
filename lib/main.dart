@@ -1,11 +1,12 @@
 import 'package:first_app/Education/information/information_page.dart';
 import 'package:first_app/Education/quiz/quiz_page.dart';
+import 'package:first_app/Forum/avalanches_forum_page.dart';
+import 'package:first_app/Forum/forum_page.dart';
 import 'package:flutter/material.dart';
 import 'sign up and log in/login_page.dart';
 import 'sign up and log in/signup_page.dart';
 import 'features_page.dart';
 import 'psychological_help_page.dart';
-import 'chat_page.dart';
 import 'home_page.dart';
 import 'Education/education_page.dart';
 import 'Location/location_page.dart';
@@ -30,13 +31,15 @@ class MyApp extends StatelessWidget {
         '/signup': (context) => SignupPage(),
         '/features': (context) => FeaturesPage(),
         '/psychological_help': (context) => PsychologicalHelpPage(),
-        '/chat': (context) => ChatPage(),
         '/education': (context) => EducationPage(),
         '/location': (context) => LocationPage(),
         '/needs_receiving': (context) => NeedsReceivingPage(),
         '/donation': (context) => DonationPage(),
         '/information': (context) => InformationPage(),
         '/quiz': (context) => QuizPage(),
+        '/forum': (context) => ForumPage(),
+        '/avalanches_forum': (context) =>
+            AvalanchesForumPage(), // Yeni route ekleyin
       },
     );
   }

@@ -126,31 +126,34 @@ class _FireQuizPageState extends State<FireQuizPage> {
   ];
 
   final List<int> _correctAnswers = [
-    4,
     3,
-    2,
-    2,
-    3,
-    2,
     2,
     1,
-    4,
-    3,
-    4,
-    3,
+    2,
+    2,
     3,
     1,
-    1,
+    0,
     3,
     2,
     3,
+    2,
+    2,
     3,
-    2
+    1,
+    2,
+    1,
+    2,
+    2,
+    1
   ];
+
+  List<int> _selectedAnswers = [];
 
   int _score = 0;
 
   void _answerQuestion(int selectedAnswer) {
+    _selectedAnswers.add(selectedAnswer);
     if (selectedAnswer == _correctAnswers[_currentQuestionIndex]) {
       _score++;
     }
@@ -172,8 +175,18 @@ class _FireQuizPageState extends State<FireQuizPage> {
               question: _questions[_currentQuestionIndex],
               choices: _choices[_currentQuestionIndex],
               onAnswer: _answerQuestion,
+              currentQuestionIndex: _currentQuestionIndex,
+              selectedAnswers: _selectedAnswers,
+              correctAnswers: _correctAnswers,
             )
-          : Result(score: _score, total: _questions.length),
+          : Result(
+              score: _score,
+              total: _questions.length,
+              questions: _questions,
+              selectedAnswers: _selectedAnswers,
+              correctAnswers: _correctAnswers,
+              choices: _choices,
+            ),
     );
   }
 }

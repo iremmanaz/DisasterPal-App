@@ -22,108 +22,136 @@ class FeaturesPage extends StatelessWidget {
               height: 150,
             ),
           ),
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/psychological_help');
-                  },
-                  child: Text(
-                    'Psychological Help',
-                    style: TextStyle(
-                        color: const Color.fromARGB(255, 0, 0,
-                            0)), // Yazı rengini beyaz olarak ayarladım
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 255, 205, 56),
-                    padding: EdgeInsets.symmetric(horizontal: 70, vertical: 40),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: const EdgeInsets.only(
+                  bottom:
+                      30), // Butonları daha aşağı çekmek için padding ekledim
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/psychological_help');
+                    },
+                    child: Text(
+                      'Psychological Help',
+                      style: TextStyle(
+                          color: const Color.fromARGB(255, 0, 0,
+                              0)), // Yazı rengini beyaz olarak ayarladım
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 255, 205, 56),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 70, vertical: 40),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/education');
-                  },
-                  child: Text(
-                    'Education',
-                    style: TextStyle(
-                        color: const Color.fromARGB(255, 0, 0,
-                            0)), // Yazı rengini beyaz olarak ayarladım
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 255, 205, 56),
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 100, vertical: 40),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                  SizedBox(height: 10), // Boşlukları artırdım
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/education');
+                    },
+                    child: Text(
+                      'Education',
+                      style: TextStyle(
+                          color: const Color.fromARGB(255, 0, 0,
+                              0)), // Yazı rengini beyaz olarak ayarladım
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 255, 205, 56),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 100, vertical: 40),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/location');
-                  },
-                  child: Text(
-                    'Location',
-                    style: TextStyle(
-                        color: const Color.fromARGB(255, 0, 0,
-                            0)), // Yazı rengini beyaz olarak ayarladım
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 255, 205, 56),
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 105, vertical: 40),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                  SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/location');
+                    },
+                    child: Text(
+                      'Location',
+                      style: TextStyle(
+                          color: const Color.fromARGB(255, 0, 0,
+                              0)), // Yazı rengini beyaz olarak ayarladım
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 255, 205, 56),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 105, vertical: 40),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/needs_receiving');
-                  },
-                  child: Text(
-                    'Needs Receiving',
-                    style: TextStyle(
-                        color: const Color.fromARGB(255, 0, 0,
-                            0)), // Yazı rengini beyaz olarak ayarladım
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 255, 205, 56),
-                    padding: EdgeInsets.symmetric(horizontal: 80, vertical: 40),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                  SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/needs_receiving');
+                    },
+                    child: Text(
+                      'Needs Receiving',
+                      style: TextStyle(
+                          color: const Color.fromARGB(255, 0, 0,
+                              0)), // Yazı rengini beyaz olarak ayarladım
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 255, 205, 56),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 80, vertical: 40),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/donation');
-                  },
-                  child: Text(
-                    'Donation',
-                    style: TextStyle(
-                        color: const Color.fromARGB(255, 0, 0,
-                            0)), // Yazı rengini beyaz olarak ayarladım
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 255, 205, 56),
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 105, vertical: 40),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                  SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/donation');
+                    },
+                    child: Text(
+                      'Donation',
+                      style: TextStyle(
+                          color: const Color.fromARGB(255, 0, 0,
+                              0)), // Yazı rengini beyaz olarak ayarladım
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 255, 205, 56),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 105, vertical: 40),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                  SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/forum');
+                    },
+                    child: Text(
+                      'Forum',
+                      style: TextStyle(
+                          color: const Color.fromARGB(255, 0, 0,
+                              0)), // Yazı rengini beyaz olarak ayarladım
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 255, 205, 56),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 115, vertical: 40),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],

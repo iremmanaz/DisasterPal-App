@@ -9,158 +9,161 @@ class StormQuizPage extends StatefulWidget {
 
 class _StormQuizPageState extends State<StormQuizPage> {
   int _currentQuestionIndex = 0;
-  final List<String> _questions = [
+  List<String> _questions = [
     "1. What is a storm?",
-    "2. Which type of storm is characterized by a rotating column of air that touches both the cloud base and the Earth's surface?",
-    "3. What is the main difference between a hurricane and a typhoon?",
-    "4. What is the eye of a hurricane?",
-    "5. Which of the following is a common effect of storms?",
-    "6. What does a storm surge involve?",
-    "7. What conditions are required for the formation of a thunderstorm?",
-    "8. What is a blizzard?",
-    "9. How are storms classified?",
-    "10. What safety measure is recommended when a tornado warning is issued?",
-    "11. What is a squall line?",
-    "12. What is the Saffir-Simpson Hurricane Wind Scale used for?",
-    "13. What causes a storm?",
-    "14. What is a thunderstorm?",
-    "15. Which of these storms is classified by rotating winds?",
-    "16. What is a hurricane called in the Western Pacific?",
-    "17. What measures the intensity of a hurricane?",
-    "18. What is the eye of a hurricane?",
-    "19. Which phenomenon occurs when warm air rises and cold air sinks, creating a cycling effect?",
-    "20. What is a supercell?"
+    "2. Which of the following is a type of storm?",
+    "3. What conditions are necessary for a thunderstorm to form?",
+    "4. What is a tornado?",
+    "5. Which scale is used to measure the intensity of a hurricane?",
+    "6. What is the difference between a hurricane and a typhoon?",
+    "7. What is a storm surge?",
+    "8. How can you stay safe during a thunderstorm?",
+    "9. What is the eye of a hurricane?",
+    "10. What is a blizzard?",
+    "11. What is the primary cause of storm-related flooding?",
+    "12. Which of the following is a common effect of severe storms?",
+    "13. How can you prepare for a hurricane?",
+    "14. What is a derecho?",
+    "15. What are isobars on a weather map?",
+    "16. What is the role of a barometer in weather prediction?",
+    "17. What is the main difference between a storm watch and a storm warning?",
+    "18. What is hail?",
+    "19. What is the safest place to be during a tornado?",
+    "20. What is a storm shelter?"
   ];
 
   final List<List<String>> _choices = [
     [
-      "A clear weather pattern characterized by sunshine",
-      "A disturbance of the atmosphere with strong winds and usually rain, snow, or other precipitation",
-      "A long period of drought affecting a large area",
-      "An earthquake that triggers a tsunami"
+      "A calm and sunny day",
+      "A disturbance in the atmosphere with strong winds and precipitation",
+      "A type of cloud formation",
+      "A seasonal weather pattern"
     ],
-    ["Hurricane", "Tornado", "Thunderstorm", "Blizzard"],
+    ["Hurricane", "Earthquake", "Tsunami", "Drought"],
     [
-      "Their size",
-      "Their location",
-      "The season they occur",
-      "Their wind speeds"
-    ],
-    [
-      "The most destructive part of the hurricane",
-      "The center of the hurricane, characterized by a calm weather",
-      "A satellite tool used to track hurricanes",
-      "The outer edge of the hurricane"
-    ],
-    [
-      "Power outages",
-      "Flooding",
-      "Damage to buildings and infrastructure",
+      "Warm, moist air",
+      "A source of lift",
+      "Unstable atmospheric conditions",
       "All of the above"
     ],
     [
-      "A sudden drop in atmospheric pressure",
-      "An increase in storm intensity",
-      "A rising of the sea as a result of atmospheric pressure changes and wind associated with a storm",
-      "A surge of lightning activity"
+      "A large wave caused by an underwater earthquake",
+      "A rotating column of air that extends from a thunderstorm to the ground",
+      "A type of cloud formation",
+      "A type of precipitation"
+    ],
+    ["Richter Scale", "Saffir-Simpson Scale", "Beaufort Scale", "Fujita Scale"],
+    [
+      "There is no difference",
+      "Hurricanes occur in the Atlantic and Northeast Pacific, while typhoons occur in the Northwest Pacific",
+      "Hurricanes are stronger than typhoons",
+      "Typhoons are stronger than hurricanes"
     ],
     [
-      "Cold temperatures and snow",
-      "Moisture, unstable air, and a lifting mechanism",
-      "Dry air and high winds",
-      "High temperatures and clear skies"
+      "A rise in sea level caused by a storm",
+      "A type of strong wind",
+      "Heavy rainfall during a storm",
+      "The calm center of a storm"
     ],
     [
-      "A tropical storm with heavy rainfall",
+      "Stay indoors and avoid electrical appliances",
+      "Go outside and enjoy the rain",
+      "Stand under a tree for shelter",
+      "Swim in the nearest body of water"
+    ],
+    [
+      "The outermost part of the storm",
+      "The calm center of a hurricane",
+      "The most dangerous part of a hurricane",
+      "The area with the heaviest rainfall"
+    ],
+    [
       "A severe snowstorm with strong winds and low visibility",
-      "A heatwave that occurs in winter",
-      "A storm with heavy thunder and lightning"
+      "A type of thunderstorm",
+      "A type of hurricane",
+      "A weather phenomenon involving hail"
+    ],
+    ["Heavy rainfall", "Strong winds", "Storm surge", "All of the above"],
+    ["Power outages", "Flooding", "Wind damage", "All of the above"],
+    [
+      "Stock up on emergency supplies",
+      "Create an evacuation plan",
+      "Secure your home",
+      "All of the above"
     ],
     [
-      "By the damage they cause",
-      "By their wind speed and potential for damage",
-      "By the amount of precipitation they drop",
-      "By the temperature during the storm"
+      "A long-lived windstorm",
+      "A type of hurricane",
+      "A rotating column of air",
+      "A severe snowstorm"
     ],
     [
-      "Go outside and confirm the tornado's location",
-      "Seek shelter immediately, preferably in a basement or storm cellar",
-      "Open all windows to equalize pressure",
-      "Evacuate the town or city"
+      "Lines of equal temperature",
+      "Lines of equal pressure",
+      "Lines of equal rainfall",
+      "Lines of equal humidity"
     ],
     [
-      "A row of bushes planted to reduce wind speed",
-      "A long line of heavy thunderstorms that can form ahead of a cold front",
-      "The boundary where two squalls meet",
-      "A graphical tool used to predict squalls"
+      "To measure temperature",
+      "To measure atmospheric pressure",
+      "To measure wind speed",
+      "To measure rainfall"
     ],
     [
-      "To measure the size of a hurricane",
-      "To determine the potential for flooding from a hurricane",
-      "To classify hurricanes based on their wind speed",
-      "To predict the path of hurricanes"
+      "A storm watch indicates that conditions are favorable for a storm, while a storm warning means a storm is imminent or occurring",
+      "A storm watch is more severe than a storm warning",
+      "A storm warning is issued after a storm has passed",
+      "There is no difference"
     ],
     [
-      "A sudden temperature change in the Earth's core",
-      "The movement of tectonic plates in the Earth's crust",
-      "Differences in air pressure",
-      "The shaking of the surface of the Earth resulting from a sudden release of energy in the Earth's lithosphere"
+      "Frozen rain",
+      "Snowflakes",
+      "Ice pellets that form in thunderstorms",
+      "A type of wind"
     ],
     [
-      "A storm characterized by snow",
-      "A storm with thunder and lightning",
-      "A strong windstorm without precipitation",
-      "A heavy downpour of rain without thunder"
-    ],
-    ["Tornado", "Hurricane", "Both A and B", "Hailstorm"],
-    ["Typhoon", "Cyclone", "Tsunami", "Tornado"],
-    [
-      "The Enhanced Fujita scale",
-      "The Richter scale",
-      "The Saffir-Simpson Hurricane Wind Scale",
-      "The Beaufort scale"
+      "In an open field",
+      "In a car",
+      "In a basement or storm shelter",
+      "Under a bridge"
     ],
     [
-      "The most destructive part of the hurricane",
-      "The center of the hurricane, characterized by calm weather",
-      "The outer edge of the hurricane",
-      "A term used to describe the vision of a hurricane"
-    ],
-    ["Convection", "Evaporation", "Condensation", "Sublimation"],
-    [
-      "A type of battery",
-      "A highly organized storm characterized by a deep rotating updraft",
-      "The final stage of a thunderstorm",
-      "A cloud formation preceding a tornado"
+      "A place to take shelter during a storm",
+      "A type of building designed to withstand storms",
+      "A portable device used to predict storms",
+      "A location for storing storm-related equipment"
     ]
   ];
 
   final List<int> _correctAnswers = [
     1,
-    2,
-    2,
-    2,
-    4,
-    3,
-    2,
-    2,
-    2,
-    2,
-    2,
-    3,
-    3,
-    2,
+    0,
     3,
     1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0,
     3,
+    3,
+    3,
+    0,
+    1,
+    1,
+    0,
     2,
     2,
-    2
+    0
   ];
+
+  List<int> _selectedAnswers = [];
 
   int _score = 0;
 
   void _answerQuestion(int selectedAnswer) {
+    _selectedAnswers.add(selectedAnswer);
     if (selectedAnswer == _correctAnswers[_currentQuestionIndex]) {
       _score++;
     }
@@ -182,8 +185,18 @@ class _StormQuizPageState extends State<StormQuizPage> {
               question: _questions[_currentQuestionIndex],
               choices: _choices[_currentQuestionIndex],
               onAnswer: _answerQuestion,
+              currentQuestionIndex: _currentQuestionIndex,
+              selectedAnswers: _selectedAnswers,
+              correctAnswers: _correctAnswers,
             )
-          : Result(score: _score, total: _questions.length),
+          : Result(
+              score: _score,
+              total: _questions.length,
+              questions: _questions,
+              selectedAnswers: _selectedAnswers,
+              correctAnswers: _correctAnswers,
+              choices: _choices,
+            ),
     );
   }
 }
