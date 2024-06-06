@@ -1,3 +1,4 @@
+import 'package:first_app/Forum/forum_comment.dart';
 import 'package:flutter/material.dart';
 
 class StormForumPage extends StatefulWidget {
@@ -9,6 +10,13 @@ class _StormForumPageState extends State<StormForumPage> {
   final TextEditingController _questionController = TextEditingController();
   List<String> questions = [];
   List<List<String>> answers = [];
+  List<ForumComment> forumComments = [
+    ForumComment("Ali", "Kara", "User",
+        "A storm warning has been issued in Ankara.", []),
+    ForumComment("Burak", "Yılmaz", "User",
+        "The roof of my house flew off in the storm!", []),
+    ForumComment("Ceren", "Zorlu", "User", "The storm is so scary!", []),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +36,7 @@ class _StormForumPageState extends State<StormForumPage> {
               TextField(
                 controller: _questionController,
                 decoration: InputDecoration(
-                  labelText: 'Ask a question about Storm',
+                  labelText: 'Ask a question about storm',
                   border: OutlineInputBorder(),
                   labelStyle: TextStyle(color: Colors.white),
                 ),
@@ -92,6 +100,64 @@ class _StormForumPageState extends State<StormForumPage> {
                               if (value.isNotEmpty) {
                                 setState(() {
                                   answers[index].add(value);
+                                });
+                              }
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+              SizedBox(height: 20),
+              Text(
+                'Forum Comments',
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+              SizedBox(height: 10),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: forumComments.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    color: Color.fromARGB(255, 70, 70, 70),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            '${forumComments[index].name} ${forumComments[index].surname} (${forumComments[index].title})',
+                            style: TextStyle(color: Colors.white, fontSize: 16),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            forumComments[index].comment,
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          for (var reply in forumComments[index].replies)
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 4.0),
+                              child: Text(
+                                reply,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 14),
+                              ),
+                            ),
+                          TextField(
+                            decoration: InputDecoration(
+                              labelText: 'Write a reply',
+                              border: OutlineInputBorder(),
+                              labelStyle: TextStyle(color: Colors.white),
+                            ),
+                            style: TextStyle(color: Colors.white),
+                            onSubmitted: (value) {
+                              if (value.isNotEmpty) {
+                                setState(() {
+                                  forumComments[index].replies.add(value);
                                 });
                               }
                             },

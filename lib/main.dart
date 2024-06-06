@@ -1,7 +1,9 @@
 import 'package:first_app/Education/information/information_page.dart';
 import 'package:first_app/Education/quiz/quiz_page.dart';
 import 'package:first_app/Forum/avalanches_forum_page.dart';
+import 'package:first_app/Forum/forum_data.dart';
 import 'package:first_app/Forum/forum_page.dart';
+import 'package:first_app/sign%20up%20and%20log%20in/User_data.dart';
 import 'package:flutter/material.dart';
 import 'sign up and log in/login_page.dart';
 import 'sign up and log in/signup_page.dart';
@@ -13,7 +15,25 @@ import 'Location/location_page.dart';
 import 'needs_receiving_page.dart';
 import 'donation_page.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+
+  // Example usage
+  login('iremmanaz@hotmail.com', '123456');
+  addComment('This is a comment from İrem.');
+  addComment('Another comment from İrem.');
+  logout();
+
+  login('elifkarabay@gmail.com', '987654');
+  addComment('This is a comment from Elif.');
+  logout();
+
+  // Display all comments
+  for (var comment in forumComments) {
+    print(
+        '${comment.name} ${comment.surname} (${comment.title}): ${comment.comment}');
+  }
+}
 
 class MyApp extends StatelessWidget {
   @override

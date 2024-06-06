@@ -1,21 +1,33 @@
+import 'package:first_app/Forum/forum_comment.dart';
 import 'package:flutter/material.dart';
 
-class EathquakeForumPage extends StatefulWidget {
+class EarthquakeForumPage extends StatefulWidget {
   @override
-  _EathquakeForumPageState createState() => _EathquakeForumPageState();
+  _EarthquakeForumPageState createState() => _EarthquakeForumPageState();
 }
 
-class _EathquakeForumPageState extends State<EathquakeForumPage> {
+class _EarthquakeForumPageState extends State<EarthquakeForumPage> {
   final TextEditingController _questionController = TextEditingController();
   List<String> questions = [];
   List<List<String>> answers = [];
+  List<ForumComment> forumComments = [
+    ForumComment("İrem", "Manaz", "Admin", "Hi! Is everything okay?", []),
+    ForumComment(
+        "Elif",
+        "Karabay",
+        "Psychologist",
+        "Remember, these tough times will pass. You are strong and resilient. Believe in yourself and don't hesitate to seek support. You are not alone; we will get through this together.",
+        []),
+    ForumComment("Melda", "Bolat", "Disaster Victim",
+        "I could not think about the last earthquake. It was horrible!", []),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Eathquake Forum',
+          'Earthquake Forum',
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Color.fromARGB(255, 49, 49, 49),
@@ -28,7 +40,7 @@ class _EathquakeForumPageState extends State<EathquakeForumPage> {
               TextField(
                 controller: _questionController,
                 decoration: InputDecoration(
-                  labelText: 'Ask a question about Eathquake',
+                  labelText: 'Ask a question about earthquake',
                   border: OutlineInputBorder(),
                   labelStyle: TextStyle(color: Colors.white),
                 ),
@@ -92,6 +104,64 @@ class _EathquakeForumPageState extends State<EathquakeForumPage> {
                               if (value.isNotEmpty) {
                                 setState(() {
                                   answers[index].add(value);
+                                });
+                              }
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+              SizedBox(height: 20),
+              Text(
+                'Forum Comments',
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+              SizedBox(height: 10),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: forumComments.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    color: Color.fromARGB(255, 70, 70, 70),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            '${forumComments[index].name} ${forumComments[index].surname} (${forumComments[index].title})',
+                            style: TextStyle(color: Colors.white, fontSize: 16),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            forumComments[index].comment,
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          for (var reply in forumComments[index].replies)
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 4.0),
+                              child: Text(
+                                reply,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 14),
+                              ),
+                            ),
+                          TextField(
+                            decoration: InputDecoration(
+                              labelText: 'Write a reply',
+                              border: OutlineInputBorder(),
+                              labelStyle: TextStyle(color: Colors.white),
+                            ),
+                            style: TextStyle(color: Colors.white),
+                            onSubmitted: (value) {
+                              if (value.isNotEmpty) {
+                                setState(() {
+                                  forumComments[index].replies.add(value);
                                 });
                               }
                             },

@@ -150,6 +150,7 @@ class FeaturesPage extends StatelessWidget {
                       ),
                     ),
                   ),
+                  SizedBox(height: 10),
                 ],
               ),
             ),

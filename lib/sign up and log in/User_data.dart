@@ -1,5 +1,3 @@
-// user_data.dart
-
 class UserData {
   final String membershipType;
   final String nickname;
@@ -57,8 +55,8 @@ List<UserData> registeredUsers = [
     password: '987654',
   ),
   UserData(
-    membershipType: 'disaster specialist',
-    nickname: 'DisasterMan',
+    membershipType: 'disaster victim',
+    nickname: 'Survivor123',
     name: 'Melda',
     surname: 'Bolat',
     birth_date: '11/03/2001',
@@ -67,8 +65,8 @@ List<UserData> registeredUsers = [
     password: 'melda123',
   ),
   UserData(
-    membershipType: 'disaster victim',
-    nickname: 'Survivor123',
+    membershipType: 'disaster specialist',
+    nickname: 'DisasterMan',
     name: 'Yiğit',
     surname: 'Özsen',
     birth_date: '15/05/2000',
@@ -87,3 +85,21 @@ List<UserData> registeredUsers = [
     password: '202521',
   ),
 ];
+
+UserData? currentUser;
+
+void login(String email, String password) {
+  for (var user in registeredUsers) {
+    if (user.email == email && user.password == password) {
+      currentUser = user;
+      print('Logged in as ${user.email}');
+      return;
+    }
+  }
+  print('Invalid email or password');
+}
+
+void logout() {
+  currentUser = null;
+  print('Logged out');
+}

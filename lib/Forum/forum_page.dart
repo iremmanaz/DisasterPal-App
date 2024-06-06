@@ -36,7 +36,10 @@ class ForumPage extends StatelessWidget {
                 crossAxisSpacing: 20,
                 padding: EdgeInsets.all(20),
                 children: <Widget>[
-                  _buildImageButton(context, EathquakeForumPage(), 'Earthquake',
+                  _buildImageButton(
+                      context,
+                      EarthquakeForumPage(),
+                      'Earthquake',
                       'C:/Users/iremm/Desktop/flutter_projects/first_app/images/earthquake.jpg'),
                   _buildImageButton(context, FloodForumPage(), 'Flood',
                       'C:/Users/iremm/Desktop/flutter_projects/first_app/images/flood.jpg'),
