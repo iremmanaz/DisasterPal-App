@@ -44,6 +44,10 @@ class _PsychologicalHelpPageState extends State<PsychologicalHelpPage> {
   }
 
   void _sendMessage(ChatMessage chatMessage) {
+    if (!isDisasterRelated(chatMessage.text.toLowerCase())) {
+      print("This question is not related to disaster issues.");
+      return; // Do not process or send a response to non-disaster related questions.
+    }
     setState(() {
       messages = [chatMessage, ...messages];
     });
@@ -92,25 +96,19 @@ class _PsychologicalHelpPageState extends State<PsychologicalHelpPage> {
     }
   }
 
-  void _sendMediaMessage() async {
-    ImagePicker picker = ImagePicker();
-    XFile? file = await picker.pickImage(
-      source: ImageSource.gallery,
-    );
-    if (file != null) {
-      ChatMessage chatMessage = ChatMessage(
-        user: currentUser,
-        createdAt: DateTime.now(),
-        text: "Describe this picture?",
-        medias: [
-          ChatMedia(
-            url: file.path,
-            fileName: "",
-            type: MediaType.image,
-          )
-        ],
-      );
-      _sendMessage(chatMessage);
-    }
+  bool isDisasterRelated(String question) {
+    List<String> keywords = [
+      'earthquake',
+      'tsunami',
+      'flood',
+      'trauma',
+      'stres',
+      'anxiety',
+      'disaster',
+      'help',
+      'müdahale',
+      'post-trauma stress disorder'
+    ];
+    return keywords.any((keyword) => question.contains(keyword));
   }
 }
